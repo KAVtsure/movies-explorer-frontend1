@@ -1,0 +1,220 @@
+.project {
+    padding: 0;
+    margin: 110px 70px;
+}
+
+.project__head {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.22;
+    letter-spacing: -0.04em;
+}
+
+.project__about {
+    border-top: 1px solid #000000;
+    margin-top: 23px;
+    padding-top: 70px;
+    display: flex;
+}
+
+.project__paragraph {
+    margin: 0;
+    padding: 0;
+    margin-right: 40px;
+}
+
+.project__paragraph:last-of-type {
+    margin-right: 0;
+}
+
+.project__title {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: -0.04em;
+}
+
+.project__text {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.43;
+    margin-top: 26px;
+
+}
+
+.project__duration {
+    padding: 0;
+    margin-top: 110px;
+    display: flex;
+    height: 36px;
+}
+
+.project__backend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.21;
+    text-align: center;
+    width: 20%;
+    background: #2BE080;
+}
+
+.project__frontend {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.21;
+    text-align: center;
+    width: 80%;
+    background: #F2F2F2;
+}
+
+.project__duration-text {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    height: 36px;
+}
+
+.project__backend-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.21;
+    text-align: center;
+    width: 20%;
+    color: #A0A0A0;
+}
+
+.project__frontend-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.21;
+    text-align: center;
+    width: 80%;
+    color: #A0A0A0;
+}
+
+@media (max-width: 768px) {
+
+    .project {
+        margin: 90px 50px;
+    }
+
+    .project__text {
+        margin-top: 22px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .project__paragraph {
+        margin-right: 30px;
+    }
+
+    .project__duration {
+        margin-top: 93px;
+    }
+
+    .project__backend-text {
+        font-weight: 400;
+    }
+
+    .project__frontend-text {
+        font-weight: 400;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .project {
+        margin: 70px 18px;
+    }
+
+    .project__head {
+        font-size: 18px;
+    }
+
+    .project__about {
+        margin-top: 28px;
+        padding-top: 60px;
+        flex-direction: column;
+    }
+
+    .project__paragraph {
+        margin-right: 0;
+        margin-bottom: 56px;
+    }
+
+    .project__paragraph:last-of-type {
+        margin-bottom: 0;
+    }
+
+    .project__title {
+        font-size: 18px;
+        line-height: 1.22;
+    }
+
+    .project__text {
+        margin-top: 16px;
+        font-size: 11px;
+        line-height: 1.45;
+    }
+
+    .project__duration {
+        margin-top: 60px;
+        height: 35px;
+    }
+
+    .project__backend {
+        font-size: 11px;
+        line-height: 1.18;
+        width: 35%;
+    }
+
+    .project__frontend {
+        font-size: 11px;
+        line-height: 1.18;
+        width: 65%;
+    }
+
+    .project__backend-text {
+        font-size: 11px;
+        line-height: 1.18;
+        width: 35%;
+    }
+
+    .project__frontend-text {
+        font-size: 11px;
+        line-height: 1.18;
+        width: 65%;
+    }
+}

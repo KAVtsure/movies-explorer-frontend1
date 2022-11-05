@@ -1,1 +1,1 @@
-# movies-explorer-frontend1
+Макет диплома https://disk.yandex.ru/d/nkTZ8MR5ZwsDiA
