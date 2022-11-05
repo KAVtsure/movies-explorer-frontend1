@@ -24,8 +24,6 @@
 .portfolio__element {
     padding: 0;
     margin: 0;
-    display: flex;
-    justify-content: space-between;
     border-bottom: 1px solid #E8E8E8;
     padding-bottom: 19px;
     margin-top: 20px;
@@ -37,9 +35,18 @@
 }
 
 .portfolio__link {
+    display: flex;
+    justify-content: space-between;
     margin: 0;
     padding: 0;
     text-decoration: none;
+    transition: transform .2s linear;
+}
+
+.portfolio__link:hover {
+    cursor: pointer;
+    transform: scale(1.05);
+    opacity: .8;
 }
 
 .portfolio__text {
@@ -64,14 +71,8 @@
     font-size: 30px;
     line-height: 2;
     letter-spacing: -0.04em;
-    transition: transform .2s linear;
 }
 
-.portfolio__arrow:hover {
-    cursor: pointer;
-    transform: scale(1.2);
-    opacity: .8;
-}
 
 @media (max-width: 768px) {
 

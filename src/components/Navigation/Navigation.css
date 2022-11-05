@@ -124,8 +124,14 @@
     background: #F9F9F9;
     border-radius: 20px;
     border: none;
-    cursor: pointer;
     text-decoration: none;
+    transition: transform .2s linear;
+}
+
+.navigation-menu__profile:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    opacity: .8;
 }
 
 .navigation__auth {

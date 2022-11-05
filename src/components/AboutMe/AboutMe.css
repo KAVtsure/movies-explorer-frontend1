@@ -21,6 +21,7 @@
     padding-top: 66px;
     display: flex;
     justify-content: space-between;
+    gap: 10px;
 }
 
 .student__info {
@@ -152,6 +153,7 @@
     .student_resume {
         padding-top: 60px;
         flex-direction: column;
+        gap: 0;
     }
 
     .student__info {

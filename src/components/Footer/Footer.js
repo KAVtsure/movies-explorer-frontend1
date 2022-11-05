@@ -8,7 +8,7 @@ function Footer() {
     return (
 
         <Route exact path={routes}>
-            <section className='footer'>
+            <footer className='footer'>
                 <h3 className='footer__head'>Учебный проект Яндекс.Практикум х BeatFilm.</h3>
                 <div className='footer__container'>
                     <p className='footer__copyright'>&copy; 2022</p>
@@ -21,7 +21,7 @@ function Footer() {
                         </li>
                     </ul>
                 </div>
-            </section>
+            </footer>
         </Route>
     )
 }
