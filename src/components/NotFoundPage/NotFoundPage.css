@@ -53,6 +53,7 @@
     cursor: pointer;
     bottom: 60px;
     transition: transform .2s linear;
+    border: none;
 }
 
 .notfound__link:hover {

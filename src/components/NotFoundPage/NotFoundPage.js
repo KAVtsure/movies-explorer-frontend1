@@ -1,7 +1,13 @@
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import './NotFoundPage.css';
 
 function NotFoundPage() {
+
+    const history = useHistory();
+
+    const handleBack = () => {
+        history.goBack();
+    }
 
     return (
         <section className='notfound'>
@@ -9,7 +15,7 @@ function NotFoundPage() {
                 <h2 className='notfound__title'>404</h2>
                 <p className='notfound__text'>Страница не найдена</p>
             </div>
-            <Link to='/' className='notfound__link'>Назад</Link>
+            <button className='notfound__link' onClick={handleBack}>Назад</button>
         </section>
     )
 }
