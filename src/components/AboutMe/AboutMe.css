@@ -1,0 +1,191 @@
+.student {
+    margin: 0;
+    padding: 110px 70px 0;
+}
+
+.student__head {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 1.22;
+    letter-spacing: -0.04em;
+    border-bottom: 1px solid #000000;
+    padding-bottom: 23px;
+}
+
+.student_resume {
+    margin: 0;
+    padding-top: 66px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.student__info {
+    margin: 0;
+    padding: 0;
+    max-width: 600px;
+}
+
+.student__name {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.16;
+    letter-spacing: -0.04em;
+}
+
+.student__job {
+    padding-top: 18px;
+    margin: 0;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.11;
+}
+
+.student__biography {
+    padding-top: 26px;
+    margin: 0;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.57;
+}
+
+.student__links {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+}
+
+.student__element {
+    margin-right: 20px;
+    padding-top: 99px;
+}
+
+.student__element:last-of-type {
+    margin-right: 0;
+}
+
+.student__link {
+    color: #000000;
+    text-decoration: none;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 1.21;
+}
+
+.student__link:hover {
+    opacity: .7;
+    cursor: pointer;
+}
+
+.student__foto {
+    width: 270px;
+    height: 327px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+
+    .student {
+        padding: 90px 50px 0;
+    }
+
+    .student__info {
+        max-width: 364px;
+    }
+
+    .student__name {
+        font-size: 40px;
+        line-height: 1;
+    }
+
+    .student__job {
+        padding-top: 16px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .student__biography {
+        padding-top: 20px;
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .student__element {
+        padding-top: 87px;
+    }
+
+    .student__foto {
+        width: 255px;
+        height: 307px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .student {
+        padding: 70px 14px 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .student__head {
+        font-size: 18px;
+        padding-bottom: 28px;
+    }
+
+    .student_resume {
+        padding-top: 60px;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    .student__info {
+        order: 2;
+    }
+
+    .student__foto {
+        width: 292px;
+        height: 352px;
+        order: 1;
+        padding-bottom: 40px;
+    }
+
+    .student__name {
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+    .student__job {
+        padding-top: 20px;
+        font-size: 11px;
+        line-height: 1.45;
+    }
+
+    .student__biography {
+        font-size: 11px;
+        line-height: 1.45;
+    }
+
+    .student__element {
+        padding-top: 40px;
+        margin-right: 26px;
+    }
+
+}

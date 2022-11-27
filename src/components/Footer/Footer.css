@@ -1,0 +1,125 @@
+.footer {
+    background: #FAFAFA;
+    padding: 79px 70px 0;
+    margin: 0 auto;
+}
+
+.footer__head {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.23;
+    text-align: center;
+    color: #A0A0A0;
+}
+
+.footer__container {
+    margin-top: 20px;
+    border-top: 1px solid #E8E8E8;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.footer__copyright {
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.23;
+    color: #000000;
+}
+
+.footer__links {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.footer__element {
+    padding: 0;
+    margin-right: 20px;
+}
+
+.footer__element:last-of-type {
+    margin-right: 0;
+}
+
+.footer__link {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.23;
+    color: #000000;
+}
+
+.footer__link:hover {
+    cursor: pointer;
+    opacity: .7;
+}
+
+@media (max-width: 768px) {
+
+    .footer {
+        padding: 79px 30px 0;
+        background: #FFFFFF;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .footer {
+        padding: 79px 10px 0;
+    }
+
+    .footer__head {
+        font-size: 12px;
+        line-height: 1.25;
+    }
+
+    .footer__container {
+        padding: 30px 0 37px;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer__copyright {
+        padding-top: 30px;
+        font-size: 12px;
+        line-height: 1.25;
+        color: #A0A0A0;
+        order: 2;
+    }
+
+    .footer__links {
+        flex-direction: column;
+    }
+
+    .footer__element {
+        margin-bottom: 12px;
+        margin-right: 0;
+    }
+
+    .footer__element:last-of-type {
+        margin-bottom: 0;
+        margin-right: 0;
+    }
+
+    .footer__link {
+        font-size: 12px;
+        line-height: 1.25;
+    }
+
+}
