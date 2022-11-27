@@ -8,7 +8,7 @@ function FilterCheckbox({ isShortMovies, onCheckBox }) {
                     className='checkbox__input'
                     id='checkbox'
                     onChange={onCheckBox}
-                    checked={isShortMovies}
+                    checked={isShortMovies ? true : false}
 
                 />
                 <span className='checkbox__slider'></span>

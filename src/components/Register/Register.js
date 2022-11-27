@@ -4,7 +4,7 @@ import { useFormWithValidation } from '../../hooks/useFormWithValidation.js';
 
 function Register({ onRegister }) {
 
-    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+    const { values, handleChange, errors, isValid } = useFormWithValidation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -12,7 +12,6 @@ function Register({ onRegister }) {
             return;
         }
         onRegister(values);
-        resetForm();
     }
 
     return (
@@ -51,6 +50,7 @@ function Register({ onRegister }) {
                     maxLength='30'
                     value={values.email || ''}
                     onChange={handleChange}
+                    pattern={'^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$'}
                 />
                 <span className='input__error' id='email-error'>{errors.email}</span>
             </label>

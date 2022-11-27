@@ -1,3 +1,5 @@
+import { MOVIE_DURATION } from './constants.js';
+
 export function convertTime(value) {
 
     const minutes = value % 60;
@@ -8,13 +10,13 @@ export function convertTime(value) {
 export function getFavoritesMovie(list, movie) {
 
     return list.find((m) => {
-        return m.movieId === (movie.id || movie.movieId)
+        return m.movieId === (movie.id || movie.movieId);
     })
 }
 
 export function shortMoviesFilter(movies) {
 
-    return movies.filter((movie) => movie.duration < 40)
+    return movies.filter((movie) => movie.duration < MOVIE_DURATION)
 }
 
 export function filterMovies(movies, userQuery, shortMovies) {
@@ -26,7 +28,7 @@ export function filterMovies(movies, userQuery, shortMovies) {
         return movieEn.indexOf(userMovie) !== -1 || movieRu.indexOf(userMovie) !== -1
     })
 
-    if (shortMovies) {
+    if (shortMovies === true) {
         return shortMoviesFilter(moviesByUserQuery)
 
     } else {

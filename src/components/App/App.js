@@ -16,12 +16,12 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage.js';
 import InfoTooltip from '../InfoTooltip/InfoTooltip.js';
 import {
     AUTH_ERROR, REGISTER_ERROR, LOGOUT_ERROR,
-    UPDATE_USER_ERROR, SUCCESS_REGISTER, SUCCESS_UPDATE_USER, DELETE_MOVIE_ERROR, SAVE_MOVIE_ERROR
+    UPDATE_USER_ERROR, SUCCESS_REGISTER, SUCCESS_UPDATE_USER, DELETE_MOVIE_ERROR, SAVE_MOVIE_ERROR, TOKEN_ERROR
 } from '../../utils/constants.js';
 
 function App() {
 
-    const [loggedIn, setLoggedIn] = useState(false);
+    const [loggedIn, setLoggedIn] = useState(localStorage.getItem('jwt'));
     const [currentUser, setCurrentUser] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [favoritesMovies, setFavoritesMovies] = useState([]);
@@ -51,6 +51,26 @@ function App() {
             })
     }
 
+    const onLogout = () => {
+        setIsLoading(true);
+        mainApi.logout()
+            .then((data) => {
+                localStorage.clear();
+                setLoggedIn(false);
+                setCurrentUser({});
+                history.push('/');
+            })
+            .catch((err) => {
+                console.log(err)
+                setInfoTooltip({ ...infoTooltip, success: false, message: LOGOUT_ERROR })
+                setIsInfoTooltipOpen(true)
+
+            })
+            .finally(() => {
+                setIsLoading(false);
+            })
+    }
+
     useEffect(() => {
         const token = localStorage.getItem('jwt');
         if (token) {
@@ -60,9 +80,13 @@ function App() {
                 })
                 .catch((err) => {
                     console.log(err);
+                    onLogout();
+                    setInfoTooltip({ ...infoTooltip, success: false, message: TOKEN_ERROR })
+                    setIsInfoTooltipOpen(true)
+
                 })
         }
-    }, [history])
+    }, [])
 
     useEffect(() => {
         if (loggedIn) {
@@ -73,6 +97,13 @@ function App() {
                 })
                 .catch((err) => {
                     console.log(err);
+                    localStorage.clear();
+                    setLoggedIn(false);
+                    setCurrentUser({});
+                    history.push('/');
+                    setInfoTooltip({ ...infoTooltip, success: false, message: TOKEN_ERROR })
+                    setIsInfoTooltipOpen(true)
+
                 })
         }
     }, [loggedIn])
@@ -85,6 +116,9 @@ function App() {
                 })
                 .catch((err) => {
                     console.log(err);
+                    setInfoTooltip({ ...infoTooltip, success: false, message: TOKEN_ERROR })
+                    setIsInfoTooltipOpen(true)
+
                 })
         }
     }, [loggedIn])
@@ -104,7 +138,6 @@ function App() {
         }
     }, [isInfoTooltipOpen])
 
-
     const onRegister = ({ name, email, password }) => {
         setIsLoading(true);
         mainApi.register({ name, email, password })
@@ -118,27 +151,6 @@ function App() {
                 setInfoTooltip({ ...infoTooltip, success: false, message: REGISTER_ERROR })
                 setIsInfoTooltipOpen(true)
                 console.log(err)
-            })
-            .finally(() => {
-                setIsLoading(false);
-            })
-    }
-
-    const onLogout = () => {
-        setIsLoading(true);
-        mainApi.logout()
-            .then((data) => {
-                localStorage.clear();
-                setLoggedIn(false);
-                setCurrentUser({});
-                history.push('/');
-
-            })
-            .catch((err) => {
-                console.log(err)
-                setInfoTooltip({ ...infoTooltip, success: false, message: LOGOUT_ERROR })
-                setIsInfoTooltipOpen(true)
-
             })
             .finally(() => {
                 setIsLoading(false);
@@ -164,17 +176,11 @@ function App() {
     }
 
     const handleMovieDelete = (movie) => {
-
-        const favoriteMovie = favoritesMovies.find((m) => {
-            if (m.movieId === movie.id || m.movieId === movie.movieId) {
-                return m
-            } else {
-                return favoritesMovies
-            }
-        })
+        const favoriteMovie = favoritesMovies.find((m) =>
+            m.movieId === movie.id || m.movieId === movie.movieId);
 
         mainApi.deleteMovie(favoriteMovie._id)
-            .then((movie) => {
+            .then(() => {
                 const newListFavoritesMovies = favoritesMovies.filter((m) => {
                     if (movie.id === m.movieId || movie.movieId === m.movieId) {
                         return false
@@ -182,13 +188,21 @@ function App() {
                         return true
                     }
                 })
-                setFavoritesMovies(newListFavoritesMovies);
 
+                setFavoritesMovies(newListFavoritesMovies);
             })
             .catch((err) => {
                 console.log(err);
                 setInfoTooltip({ ...infoTooltip, success: false, message: DELETE_MOVIE_ERROR })
                 setIsInfoTooltipOpen(true)
+                if (err.includes('Ошибка: 401')) {
+                    localStorage.clear();
+                    setLoggedIn(false);
+                    setCurrentUser({});
+                    history.push('/');
+                    setInfoTooltip({ ...infoTooltip, success: false, message: TOKEN_ERROR })
+                    setIsInfoTooltipOpen(true)
+                }
             })
     }
 
@@ -197,14 +211,20 @@ function App() {
         mainApi.addMovie(movie)
             .then((res) => {
                 setFavoritesMovies([res, ...favoritesMovies]);
-
             })
             .catch((err) => {
                 console.log(err);
                 setInfoTooltip({ ...infoTooltip, success: false, message: SAVE_MOVIE_ERROR })
                 setIsInfoTooltipOpen(true)
+                if (err.includes('Ошибка: 401')) {
+                    setInfoTooltip({ ...infoTooltip, success: false, message: TOKEN_ERROR })
+                    setIsInfoTooltipOpen(true)
+                    localStorage.clear();
+                    setLoggedIn(false);
+                    setCurrentUser({});
+                    history.push('/');
+                }
             })
-
     }
 
     const handleCloseInfoTooltip = () => {
@@ -243,6 +263,7 @@ function App() {
                         setInfoTooltip={setInfoTooltip}
                         setIsInfoTooltipOpen={setIsInfoTooltipOpen}
                         infoTooltip={infoTooltip}
+
                     />
                     <ProtectedRoute exact path="/profile"
                         component={Profile}

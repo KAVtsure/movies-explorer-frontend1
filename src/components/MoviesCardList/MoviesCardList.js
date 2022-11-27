@@ -1,46 +1,52 @@
 import './MoviesCardList.css';
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import useScreenWidth from '../../hooks/useScreenWidth.js';
 import MoviesCard from '../MoviesCard/MoviesCard.js';
 import { getFavoritesMovie } from '../../utils/utils.js';
+import {
+    ZERO, MOVIE_START_DESKTOP, MOVIE_ELSE_DESKTOP, MOVIE_START_TABLET, MOVIE_ELSE_TABLET,
+    MOVIE_START_MOBILE, MOVIE_ELSE_MOBILE, SCREENWIDTH_DESKTOP, SCREENWIDTH_TABLET, SCREENWIDTH_MOBILE
+} from '../../utils/constants.js';
 
 function MoviesCardList({ movies, isFavoritesPage, favoritesMovies, onMovieLike, onMovieDelete }) {
 
     const screenWidth = useScreenWidth();
-    const location = useLocation();
+
     const [moviesListShow, setMoviesListShow] = useState([]);
-    const [moviesShowAmount, setMoviesShowAmount] = useState({ start: 0, else: 0 });
+    const [moviesShowAmount, setMoviesShowAmount] = useState({ start: ZERO, else: ZERO });
     const [isRender, setIsRender] = useState(true);
-
-    useEffect(() => {
-        if (screenWidth >= 1222) {
-            setMoviesShowAmount({ start: 12, else: 3 })
-        } else if (screenWidth < 1222 && screenWidth >= 690) {
-            setMoviesShowAmount({ start: 8, else: 2 })
-        } else if (screenWidth < 690 && screenWidth >= 320) {
-            setMoviesShowAmount({ start: 5, else: 2 })
-        }
-        return () => setIsRender(false)
-    }, [screenWidth, isRender])
-
-    useEffect(() => {
-        if (location.pathname === '/saved-movies') {
-            setMoviesListShow(favoritesMovies)
-        }
-    }, [favoritesMovies, location.pathname])
-
-    const handleClickElse = () => {
-        setMoviesListShow(movies.slice(0, moviesListShow.length + moviesShowAmount.else))
-
-    }
 
     useEffect(() => {
         if (movies.length) {
             const result = movies.filter((item, index) => index < moviesShowAmount.start)
             setMoviesListShow(result)
         }
-    }, [movies, moviesShowAmount.start, isFavoritesPage])
+
+    }, [movies, moviesShowAmount.start])
+
+    useEffect(() => {
+        if (isFavoritesPage === true) {
+            setMoviesListShow(favoritesMovies)
+        }
+    }, [favoritesMovies, isFavoritesPage])
+
+    useEffect(() => {
+
+        if (screenWidth >= SCREENWIDTH_DESKTOP) {
+            setMoviesShowAmount({ start: MOVIE_START_DESKTOP, else: MOVIE_ELSE_DESKTOP })
+        } else if (screenWidth < SCREENWIDTH_DESKTOP && screenWidth >= SCREENWIDTH_TABLET) {
+            setMoviesShowAmount({ start: MOVIE_START_TABLET, else: MOVIE_ELSE_TABLET })
+        } else if (screenWidth < SCREENWIDTH_TABLET && screenWidth >= SCREENWIDTH_MOBILE) {
+            setMoviesShowAmount({ start: MOVIE_START_MOBILE, else: MOVIE_ELSE_MOBILE })
+        }
+        return () => setIsRender(false)
+
+    }, [screenWidth, isRender])
+
+    const handleClickElse = () => {
+        setMoviesListShow(movies.slice(0, moviesListShow.length + moviesShowAmount.else))
+
+    }
 
     return (
         <section className="movies-container">
@@ -49,7 +55,7 @@ function MoviesCardList({ movies, isFavoritesPage, favoritesMovies, onMovieLike,
                     return (
                         <MoviesCard
                             movie={movie}
-                            key={movie.id || movie._id}
+                            key={isFavoritesPage ? movie.movieId : movie.id}
                             favorites={getFavoritesMovie(favoritesMovies, movie)}
                             isFavoritesPage={isFavoritesPage}
                             onMovieLike={onMovieLike}

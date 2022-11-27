@@ -4,7 +4,7 @@ import { useFormWithValidation } from '../../hooks/useFormWithValidation.js';
 
 function Login({ onLogin }) {
 
-    const { values, handleChange, errors, isValid, resetForm } = useFormWithValidation();
+    const { values, handleChange, errors, isValid } = useFormWithValidation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -12,7 +12,7 @@ function Login({ onLogin }) {
             return;
         }
         onLogin(values);
-        resetForm();
+
     }
 
     return (
@@ -36,6 +36,7 @@ function Login({ onLogin }) {
                     maxLength='30'
                     value={values.email || ''}
                     onChange={handleChange}
+                    pattern={'^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$'}
                 />
                 <span className='input__error' id='email-error'>{errors.email}</span>
             </label>

@@ -6,13 +6,13 @@ import { UPDATE_USER_MATCH_ERROR } from '../../utils/constants.js';
 
 function Profile({ onUpdateUser, onLogout, setInfoTooltip, setIsInfoTooltipOpen, infoTooltip }) {
 
-    const { values, setValues, handleChange, errors, isValid, resetForm, setIsValid } = useFormWithValidation();
+    const { values, setValues, handleChange, errors, isValid, setIsValid } = useFormWithValidation();
     const currentUser = useContext(CurrentUserContext);
 
     const [isEditProfile, setIsEditProfile] = useState(false);
+    const previousValue = (currentUser.email === values.email) && (currentUser.name === values.name);
 
     function handleSubmit(e) {
-        const previousValue = (currentUser.email === values.email) && (currentUser.name === values.name);
 
         e.preventDefault();
         if (previousValue) {
@@ -25,11 +25,17 @@ function Profile({ onUpdateUser, onLogout, setInfoTooltip, setIsInfoTooltipOpen,
         console.log(currentUser)
         onUpdateUser(values);
         setIsEditProfile(false);
-        // resetForm();
+       
     }
 
     useEffect(() => {
-       
+        if (previousValue) {
+            setIsValid(false)
+        }
+    }, [previousValue, setIsValid])
+
+    useEffect(() => {
+
         if (currentUser) {
             setValues(
                 {
@@ -80,6 +86,7 @@ function Profile({ onUpdateUser, onLogout, setInfoTooltip, setIsInfoTooltipOpen,
                             value={values.email || ''}
                             onChange={handleChange}
                             disabled={!isEditProfile}
+                            pattern={'^\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*(\\.\\w{2,3})+$'}
                         />
                         <span className='error__profile' id='name-error'>{errors.email}</span>
                     </label>

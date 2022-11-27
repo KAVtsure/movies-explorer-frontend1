@@ -38,6 +38,19 @@
     line-height: 1.11;
     color: #A0A0A0;
     width: 100%;
+    position: relative;
+}
+
+.search__error {
+    color: #EE3465;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    position: absolute;
+    /* left: 0; */
+    top: 225px;
 }
 
 .search__submit-button {
@@ -105,6 +118,10 @@
 
     .search {
         margin: 80px 10px 0;
+    }
+
+    .search__error {
+        font-size: 12px;
     }
 
 }
