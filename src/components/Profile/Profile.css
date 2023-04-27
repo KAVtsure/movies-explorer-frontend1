@@ -1,0 +1,156 @@
+.profile {
+    margin: 0 auto;
+    padding: 74px 0 70px;
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    align-items: center;
+    max-width: 410px;
+    position: relative;
+}
+
+.profile__title {
+    color: #000000;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 1.21;
+    margin: 0;
+    padding: 0;
+}
+
+.form__profile {
+    padding-top: 123px;
+    width: 100%;
+}
+
+.value__profile {
+    margin-bottom: 17px;
+    border-bottom: 1px solid #E8E8E8;
+}
+
+.value__profile:last-of-type {
+    border: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.label__profile {
+    display: flex;
+    justify-content: center;
+    color: #000000;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 1.18;
+    padding: 0;
+    /* text-overflow: ellipsis; */
+    white-space: nowrap;
+    position: relative;
+}
+
+.input__profile {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: #000000;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 1.18;
+    text-align: right;
+    border: none;
+    padding-bottom: 16px;
+}
+
+.error__profile {
+    color: #EE3465;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 1.2;
+    position: absolute;
+    left: 0;
+    bottom: -12px;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+    margin: 220px auto 0;
+}
+
+.form__submit-profile {
+    background-color: #FFFFFF;
+    border: none;
+    box-sizing: border-box;
+    align-items: center;
+    padding: 0;
+    color: #000000;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 1.23;
+    text-align: center;
+    cursor: pointer;
+    padding-bottom: 16px;
+    transition: transform .2s linear;
+}
+
+.form__submit-profile:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    opacity: .7;
+}
+
+.form__submit-profile_disabled{
+    background-color: #F8F8F8;
+    color: #C2C2C2;
+}
+
+.form__submit-profile_logout {
+    color: #EE3465;
+    font-weight: 500;
+    padding-bottom: 0;
+}
+
+@media (max-width: 768px) {
+
+    .profile {
+        padding: 236px 0 269px;
+    }
+
+    .form__profile {
+        padding-top: 96px;
+    }
+
+    .btn-container {
+        margin: 210px auto 0;
+    }
+}
+
+@media (max-width: 420px) {
+
+    .profile {
+        padding: 70px 30px 40px;
+        min-width: 260px;
+    }
+
+    .form__profile {
+        padding-top: 80px;
+    }
+
+    .btn-container {
+        margin: 379px auto 0;
+    }
+
+    .form__submit-profile {
+        font-size: 12px;
+        line-height: 1.25;
+    }
+}

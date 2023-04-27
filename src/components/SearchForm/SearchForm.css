@@ -1,0 +1,127 @@
+.search {
+    margin: 70px 70px 0;
+    padding-bottom: 69px;
+    border-bottom: 1px solid #E8E8E8;
+    box-sizing: border-box;
+}
+
+.search__form {
+    background-color: #F9F9F9;
+    display: flex;
+    align-items: center;
+    border-radius: 9px;
+}
+
+.search__block {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 72px;
+    /* gap: 5px; */
+}
+
+.search__icon {
+    width: 34px;
+    height: 34px;
+    margin: 19px 10px 19px 19px;
+}
+
+.search__input {
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 1.11;
+    color: #A0A0A0;
+    width: 100%;
+    position: relative;
+}
+
+.search__error {
+    color: #EE3465;
+    font-family: 'Inter', 'Helvetica Neue', 'Arial', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 1.2;
+    position: absolute;
+    /* left: 0; */
+    top: 225px;
+}
+
+.search__submit-button {
+    width: 34px;
+    height: 34px;
+    margin-right: 30px;
+    box-sizing: border-box;
+    background-image: url(../../images/search-submit_icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #FF6838;
+    border-radius: 48px;
+    border: none;
+    transition: transform .2s linear;
+}
+
+.search__submit-button:hover {
+    cursor: pointer;
+    transform: scale(1.2);
+    opacity: .8;
+}
+
+@media (max-width: 768px) {
+
+    .search {
+        margin: 70px 30px 0;
+        padding-bottom: 109px;
+    }
+
+    .search__submit-button {
+        margin-right: 19px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .search {
+        padding-bottom: 45px;
+    }
+
+    .search__form {
+        background-color: #FFFFFF;
+        flex-direction: column;
+    }
+
+    .search__block {
+        background-color: #F9F9F9;
+        margin-bottom: 46px;
+        border-radius: 9px;
+    }
+
+    .search__icon {
+        display: none;
+    }
+
+    .search__input {
+        font-size: 14px;
+        line-height: 1.43;
+        padding: 19px;
+    }
+
+}
+
+@media (max-width: 420px) {
+
+    .search {
+        margin: 80px 10px 0;
+    }
+
+    .search__error {
+        font-size: 12px;
+    }
+
+}
